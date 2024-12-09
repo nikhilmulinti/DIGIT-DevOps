@@ -51,8 +51,7 @@ jobs:
             echo "Error: IAM User ARN is empty" >&2
             exit 1
           fi
-          echo "::set-output name=arn::$ARN"
-   
+          echo "TF_VAR_iam_user_arn=${ARN}" >> $GITHUB_ENV
       - name: Displaying the input parameters provided
         run: cat input.yaml
         working-directory: infra-as-code/terraform/sample-aws
@@ -102,7 +101,6 @@ jobs:
       AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION:  ${{ secrets.AWS_DEFAULT_REGION }}
       AWS_REGION:  ${{ secrets.AWS_REGION }}
-      TF_VAR_iam_user_arn: ${{ steps.iam.outputs.arn }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
