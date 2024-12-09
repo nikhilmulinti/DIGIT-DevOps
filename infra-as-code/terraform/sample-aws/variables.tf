@@ -30,8 +30,9 @@ variable "kubernetes_version" {
 }
 
 variable "instance_types" {
-  description = "eGov recommended below instance type as a default"
-  default = "r5ad.large"
+  description = "Arry of instance types for SPOT instances"
+  default = ["r5ad.large"]
+  
 }
 
 variable "override_instance_types" {
