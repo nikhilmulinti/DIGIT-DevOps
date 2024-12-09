@@ -85,7 +85,6 @@ variable "enable_karpenter" {
 }
 variable "iam_user_arn" {
   description = "Provide the IAM user arn which you are using to create infrastructure"
-  default = "<iam_user_arn>" #Example: arn:aws:iam::4332145635273:user/demo
 }
 
 
