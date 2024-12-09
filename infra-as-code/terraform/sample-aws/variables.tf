@@ -68,7 +68,11 @@ variable "public_key" {
   default = <public_ssh_key>
   description = "ssh key"
 }
-
+variable "enable_karpenter" {
+  description = "Enable the karpenter."
+  type        = bool
+  default     = false
+}
 ## change ssh key_name eg. digit-quickstart_your-name
 
 
