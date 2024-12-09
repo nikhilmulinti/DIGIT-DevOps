@@ -66,7 +66,7 @@ module "eks" {
   access_entries = {
     devops = {
       kubernetes_groups = []
-      principal_arn     = "${var.iam_user_arn}"
+      principal_arn     = "arn:aws:iam::680148267093:user/openshift"
 
       policy_associations = {
         devops = {
