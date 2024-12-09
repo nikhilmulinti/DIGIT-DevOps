@@ -52,6 +52,7 @@ jobs:
             exit 1
           fi
           echo "TF_VAR_iam_user_arn=${ARN}" >> $GITHUB_ENV
+          echo "Set TF_VAR_iam_user_arn=${ARN}"
       - name: Displaying the input parameters provided
         run: cat input.yaml
         working-directory: infra-as-code/terraform/sample-aws
@@ -166,10 +167,14 @@ jobs:
       - name: Terraform Plan - Infra creation
         id: plan-Infra
         run: terraform plan -no-color -input=false -var db_password=$db_password   
+        env:
+          TF_VAR_iam_user_arn: ${{ env.TF_VAR_iam_user_arn }}
         working-directory: infra-as-code/terraform/sample-aws
       - name: Terraform Apply - Infra creation
         id: apply-Infra
         run: terraform apply -no-color -input=false -auto-approve -var db_password=$db_password
+        env:
+          TF_VAR_iam_user_arn: ${{ env.TF_VAR_iam_user_arn }}
         continue-on-error: true  
         working-directory: infra-as-code/terraform/sample-aws
       - name: Install AWS IAM Authenticator
