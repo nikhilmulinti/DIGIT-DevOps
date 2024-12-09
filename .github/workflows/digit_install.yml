@@ -51,8 +51,7 @@ jobs:
             echo "Error: IAM User ARN is empty" >&2
             exit 1
           fi
-          echo "ARN=${ARN}"
-          echo "TF_VAR_iam_user_arn=${ARN}" >> $GITHUB_ENV
+          echo "::set-output name=arn::$ARN"
    
       - name: Displaying the input parameters provided
         run: cat input.yaml
@@ -103,7 +102,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION:  ${{ secrets.AWS_DEFAULT_REGION }}
       AWS_REGION:  ${{ secrets.AWS_REGION }}
-      TF_VAR_iam_user_arn: ${{ env.TF_VAR_iam_user_arn }}
+      TF_VAR_iam_user_arn: ${{ steps.iam.outputs.arn }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
