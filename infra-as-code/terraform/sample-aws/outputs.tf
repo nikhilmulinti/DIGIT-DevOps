@@ -41,10 +41,10 @@ output "zone" {
   value = var.availability_zones
 }
 
-output "worker_security_group_id" {
-  description = "The security group id of worker nodes"
-  value       = module.eks.worker_security_group_id
+output "node_security_group_id" {
+  value = module.eks.node_security_group_id
 }
+
 
 output "eks_cluster_iam_role_name" {
   value = module.eks.cluster_iam_role_name
