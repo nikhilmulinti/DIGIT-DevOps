@@ -48,6 +48,9 @@ jobs:
         run: |
           ARN=$(aws iam get-user --query 'User.Arn' --output text)
           echo "ARN=${ARN}" >> $GITHUB_ENV  
+      - name: Display environment variables
+        run: |
+          echo "IAM User ARN: $TF_VAR_iam_user_arn"    
       - name: Displaying the input parameters provided
         run: cat input.yaml
         working-directory: infra-as-code/terraform/sample-aws
@@ -97,7 +100,6 @@ jobs:
       AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION:  ${{ secrets.AWS_DEFAULT_REGION }}
       AWS_REGION:  ${{ secrets.AWS_REGION }}
-      TF_VAR_iam_user_arn: ${{ env.ARN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
