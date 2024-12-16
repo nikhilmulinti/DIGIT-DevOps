@@ -63,21 +63,7 @@ module "eks" {
       self        = true
     }
   }
-  access_entries = {
-    devops = {
-      kubernetes_groups = []
-      principal_arn     = "arn:aws:iam::680148267093:user/openshift"
 
-      policy_associations = {
-        devops = {
-          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-          access_scope = {
-            type = "cluster"
-          }
-        }
-      }
-    }
-  }
   node_security_group_tags = {
     "karpenter.sh/discovery" = var.cluster_name
   }

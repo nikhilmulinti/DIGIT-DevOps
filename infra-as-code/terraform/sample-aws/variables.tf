@@ -84,10 +84,6 @@ variable "enable_karpenter" {
   type        = bool
   default     = false
 }
-variable "iam_user_arn" {
-  description = "Provide the IAM user arn which you are using to create infrastructure"
-}
-
 
 ## change ssh key_name eg. digit-quickstart_your-name
 
