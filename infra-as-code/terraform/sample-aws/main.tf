@@ -1,4 +1,4 @@
-terraform {
+terraform { 
   backend "s3" {
     bucket = <terraform_state_bucket_name>
     key    = "terraform-setup/terraform.tfstate"
