@@ -481,6 +481,12 @@ jobs:
       - name: Terraform Init - Infra destruction
         run: terraform init
         working-directory: infra-as-code/terraform/sample-aws
+      - name: List Terraform State
+        run: terraform state list
+        working-directory: infra-as-code/terraform/sample-aws
+      - name: Remove Problematic Kubernetes State Entry
+        run: terraform state rm module.eks.kubernetes_config_map.aws_auth[0]
+        working-directory: infra-as-code/terraform/sample-aws        
       - name: Terraform Validate - Infra destruction
         run: terraform validate -no-color
         working-directory: infra-as-code/terraform/sample-aws
