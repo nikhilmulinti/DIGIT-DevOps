@@ -52,7 +52,6 @@ module "eks" {
   cluster_endpoint_public_access  = true
   cluster_endpoint_private_access = true
   authentication_mode = "API_AND_CONFIG_MAP"
-  enable_cluster_creator_admin_permissions = true
   subnet_ids      = concat(module.network.private_subnets, module.network.public_subnets)
   node_security_group_additional_rules = {
     ingress_self_ephemeral = {
